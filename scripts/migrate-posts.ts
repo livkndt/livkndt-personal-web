@@ -46,7 +46,7 @@ files.forEach((file) => {
       .find((p: string) => p.trim().length > 0 && !p.trim().startsWith('#'));
     if (firstParagraph) {
       description = firstParagraph
-        .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove markdown links
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove markdown links
         .replace(/\*\*/g, '') // Remove bold
         .replace(/\*/g, '') // Remove italic
         .trim()
