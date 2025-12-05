@@ -9,10 +9,15 @@
 
   html {
     @apply antialiased;
+    height: 100%;
+    height: -webkit-fill-available;
   }
 
   body {
     @apply font-sans bg-eggshell dark:bg-twilight-indigo text-twilight-indigo dark:text-eggshell transition-colors duration-200;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    min-height: 100dvh;
   }
 
   /* Headings use Alice font */
