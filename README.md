@@ -201,11 +201,33 @@ npm run test
 
 ### E2E Tests
 
-E2E tests are in the `e2e/` directory. Run with:
+E2E tests are in the `e2e/` directory using Playwright.
+
+**First-time setup:**
+
+Install Playwright browsers (required before running tests):
 
 ```bash
-npx playwright test
+npx playwright install --with-deps
 ```
+
+Or install only Chromium (faster, used in pre-commit hook):
+
+```bash
+npx playwright install chromium
+```
+
+**Running tests:**
+
+```bash
+# Run all E2E tests (all browsers)
+npm run test:e2e
+
+# Run tests for a specific browser
+npx playwright test --project=chromium
+```
+
+**Note:** The pre-commit hook will run E2E tests automatically if browsers are installed. If browsers aren't installed, the hook will skip E2E tests with a warning (commit will still proceed).
 
 ## Accessibility
 
