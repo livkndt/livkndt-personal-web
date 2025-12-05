@@ -41,6 +41,14 @@
     @apply max-w-none;
   }
 
+  .prose p {
+    @apply mb-6 leading-relaxed;
+  }
+
+  .prose p:last-child {
+    @apply mb-0;
+  }
+
   .prose a {
     @apply text-burnt-peach dark:text-muted-teal hover:underline;
   }

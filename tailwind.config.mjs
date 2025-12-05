@@ -20,6 +20,11 @@ export default {
           css: {
             maxWidth: 'none',
             color: 'inherit',
+            lineHeight: '1.75',
+            p: {
+              marginTop: '1.5em',
+              marginBottom: '1.5em',
+            },
             a: {
               color: 'inherit',
               textDecoration: 'underline',

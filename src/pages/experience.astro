@@ -51,7 +51,7 @@ function formatPeriod(start: Date, end?: Date): string {
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-burnt-peach dark:text-eggshell">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-twilight-indigo dark:text-eggshell">
         Experience
       </h1>
       <div class="space-y-12">
@@ -59,10 +59,10 @@ function formatPeriod(start: Date, end?: Date): string {
           sortedExperiences.map((exp) => (
             <article class="border-l-4 border-burnt-peach dark:border-muted-teal pl-6 sm:pl-8">
               <div class="mb-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-burnt-peach dark:text-eggshell mb-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-twilight-indigo dark:text-eggshell mb-2">
                   {exp.data.title}
                 </h2>
-                <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 text-burnt-peach/80 dark:text-eggshell/80 mb-2">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 text-twilight-indigo/80 dark:text-eggshell/80 mb-2">
                   {exp.data.company_url ? (
                     <a
                       href={exp.data.company_url}
@@ -79,14 +79,14 @@ function formatPeriod(start: Date, end?: Date): string {
                   <p>{formatPeriod(exp.data.start, exp.data.end)}</p>
                 </div>
                 {exp.data.description && (
-                  <p class="text-burnt-peach/70 dark:text-eggshell/70 mb-4">
+                  <p class="text-twilight-indigo/70 dark:text-eggshell/70 mb-4">
                     {exp.data.description}
                   </p>
                 )}
                 {exp.tech && exp.tech.length > 0 && (
                   <div class="flex flex-wrap gap-2 mb-4">
                     {exp.tech.map((tech) => (
-                      <span class="px-2 py-1 bg-muted-teal/40 dark:bg-muted-teal/20 text-burnt-peach dark:text-eggshell rounded text-sm">
+                      <span class="px-2 py-1 bg-muted-teal/40 dark:bg-muted-teal/20 text-twilight-indigo dark:text-eggshell rounded text-sm">
                         {tech}
                       </span>
                     ))}
@@ -94,10 +94,13 @@ function formatPeriod(start: Date, end?: Date): string {
                 )}
               </div>
               {exp.responsibilities && exp.responsibilities.length > 0 && (
-                <ul class="space-y-2 text-burnt-peach/70 dark:text-eggshell/70">
+                <ul class="space-y-2 text-twilight-indigo/70 dark:text-eggshell/70">
                   {exp.responsibilities.map((item) => (
                     <li class="flex items-start gap-2">
-                      <span class="text-burnt-peach dark:text-muted-teal mt-1.5" aria-hidden="true">
+                      <span
+                        class="text-twilight-indigo dark:text-muted-teal mt-1.5"
+                        aria-hidden="true"
+                      >
                         •
                       </span>
                       <span>{item}</span>

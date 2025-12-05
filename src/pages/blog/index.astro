@@ -17,10 +17,12 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-burnt-peach dark:text-eggshell">Blog</h1>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-twilight-indigo dark:text-eggshell">
+        Blog
+      </h1>
       {
         posts.length === 0 ? (
-          <p class="text-lg text-burnt-peach/70 dark:text-eggshell/70">
+          <p class="text-lg text-twilight-indigo/70 dark:text-eggshell/70">
             No blog posts yet. Check back soon!
           </p>
         ) : (
@@ -31,15 +33,15 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.
                   <h2 class="text-2xl sm:text-3xl font-bold mb-3">
                     <a
                       href={`/blog/${post.slug}`}
-                      class="text-burnt-peach dark:text-eggshell hover:text-burnt-peach dark:hover:text-apricot-cream transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-apricot-cream focus:ring-offset-2 dark:focus:ring-offset-burnt-peach rounded"
+                      class="text-twilight-indigo dark:text-eggshell hover:text-burnt-peach dark:hover:text-muted-teal transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo rounded"
                     >
                       {post.data.title}
                     </a>
                   </h2>
-                  <p class="text-burnt-peach/70 dark:text-eggshell/70 mb-4">
+                  <p class="text-twilight-indigo/70 dark:text-eggshell/70 mb-4">
                     {post.data.description}
                   </p>
-                  <div class="flex flex-wrap items-center gap-4 text-sm text-burnt-peach/60 dark:text-eggshell/60">
+                  <div class="flex flex-wrap items-center gap-4 text-sm text-twilight-indigo/60 dark:text-eggshell/60">
                     <time datetime={post.data.pubDate.toISOString()}>
                       {format(post.data.pubDate, 'd MMMM yyyy')}
                     </time>
@@ -49,7 +51,7 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.
                         <ul class="flex flex-wrap gap-2">
                           {post.data.tags.map((tag) => (
                             <li>
-                              <span class="px-2 py-1 bg-apricot-cream/30 dark:bg-apricot-cream/20 text-burnt-peach dark:text-eggshell rounded text-xs">
+                              <span class="px-2 py-1 bg-apricot-cream/30 dark:bg-apricot-cream/20 text-twilight-indigo dark:text-eggshell rounded text-xs">
                                 {tag}
                               </span>
                             </li>
