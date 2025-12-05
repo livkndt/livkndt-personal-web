@@ -39,7 +39,7 @@ test.describe('Home Page', () => {
     await expect(blogLink).toBeVisible();
   });
 
-  test('should toggle dark mode', async ({ page }) => {
+  test('should toggle dark mode', async ({ page, project }) => {
     await page.goto('/');
 
     const themeToggle = page.getByRole('button', { name: 'Toggle dark mode' });
@@ -51,7 +51,13 @@ test.describe('Home Page', () => {
     expect(initialClass).not.toContain('dark');
 
     // Toggle dark mode
-    await themeToggle.click();
+    // Use force click on mobile browsers where elements may overlap
+    const isMobile = project?.name?.includes('Mobile') ?? false;
+    if (isMobile) {
+      await themeToggle.click({ force: true });
+    } else {
+      await themeToggle.click();
+    }
 
     // Check dark mode is applied
     const darkClass = await html.getAttribute('class');
