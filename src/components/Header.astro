@@ -1,0 +1,27 @@
+---
+import { siteConfig } from '../config';
+import Navigation from './Navigation.astro';
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="sticky top-0 z-50 bg-peach-fuzz/80 dark:bg-olive/80 backdrop-blur-md border-b border-dry-sage/30 dark:border-dry-sage/20">
+  <nav
+    class="container mx-auto px-4 sm:px-6 lg:px-8"
+    aria-label="Main navigation"
+  >
+    <div class="flex items-center justify-between h-16">
+      <a
+        href="/"
+        class="text-xl font-bold text-olive dark:text-peach-fuzz hover:text-carrot-orange dark:hover:text-dry-sage transition-colors focus:outline-none focus:ring-2 focus:ring-carrot-orange dark:focus:ring-dry-sage focus:ring-offset-2 dark:focus:ring-offset-olive rounded"
+        aria-label="Home"
+      >
+        {siteConfig.author}
+      </a>
+      <div class="flex items-center gap-4">
+        <Navigation />
+        <ThemeToggle />
+      </div>
+    </div>
+  </nav>
+</header>
+

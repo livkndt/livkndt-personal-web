@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+---
+
+<BaseLayout title={`404 - Page Not Found | ${siteConfig.title}`} description="Page not found">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <div class="max-w-2xl mx-auto text-center">
+      <h1 class="text-6xl sm:text-8xl font-bold mb-4 text-olive dark:text-peach-fuzz">
+        404
+      </h1>
+      <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-olive/80 dark:text-peach-fuzz/80">
+        Page Not Found
+      </h2>
+      <p class="text-lg text-olive/70 dark:text-peach-fuzz/70 mb-8">
+        Sorry, the page you're looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center px-6 py-3 bg-carrot-orange text-peach-fuzz rounded-lg hover:bg-cayenne-red transition-colors focus:outline-none focus:ring-2 focus:ring-carrot-orange focus:ring-offset-2 dark:focus:ring-offset-olive font-medium"
+      >
+        Go Home
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+

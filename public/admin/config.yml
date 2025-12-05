@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: 'blog'
+    label: 'Blog Posts'
+    folder: 'src/content/blog'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: true,
+        }
+      - {
+          label: 'Publish Date',
+          name: 'pubDate',
+          widget: 'datetime',
+          required: true,
+          format: 'YYYY-MM-DD',
+          date_format: 'YYYY-MM-DD',
+          time_format: false,
+        }
+      - {
+          label: 'Updated Date',
+          name: 'updatedDate',
+          widget: 'datetime',
+          required: false,
+          format: 'YYYY-MM-DD',
+          date_format: 'YYYY-MM-DD',
+          time_format: false,
+        }
+      - {
+          label: 'Author',
+          name: 'author',
+          widget: 'string',
+          default: 'Olivia Knoedt',
+          required: true,
+        }
+      - { label: 'Image', name: 'image', widget: 'image', required: false }
+      - {
+          label: 'Tags',
+          name: 'tags',
+          widget: 'list',
+          default: [],
+          field: { label: 'Tag', name: 'tag', widget: 'string' },
+        }
+      - {
+          label: 'Draft',
+          name: 'draft',
+          widget: 'boolean',
+          default: false,
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
+
