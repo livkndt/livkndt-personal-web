@@ -15,4 +15,12 @@ export const siteConfig = {
       measurementId: 'G-MTPS2265QT', // Update with your Google Analytics 4 Measurement ID
     },
   },
+  features: {
+    // Feature flags - visible in dev, hidden in production
+    // Can be overridden with environment variable ENABLE_PROJECTS=true
+    // Set to true to enable in production when ready
+    projects:
+      import.meta.env.PUBLIC_ENABLE_PROJECTS === 'true' ||
+      (!import.meta.env.PROD && import.meta.env.PUBLIC_ENABLE_PROJECTS !== 'false'),
+  },
 };

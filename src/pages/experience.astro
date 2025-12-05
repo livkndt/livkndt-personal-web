@@ -27,15 +27,9 @@ const processedExperiences = allExperiences.map((exp) => {
   };
 });
 
-// Sort experiences by date (most recent first)
+// Sort experiences by start date (most recent first)
 const sortedExperiences = processedExperiences.sort((a, b) => {
-  // If no end date, it's current - put those first
-  if (!a.data.end && b.data.end) return -1;
-  if (a.data.end && !b.data.end) return 1;
-  // If both have end dates or both are current, sort by start date
-  const aDate = a.data.end || a.data.start;
-  const bDate = b.data.end || b.data.start;
-  return bDate.getTime() - aDate.getTime();
+  return b.data.start.getTime() - a.data.start.getTime();
 });
 
 const CDN_URL = 'https://d19w7e3j8gkywb.cloudfront.net/';

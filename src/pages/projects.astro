@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+
+// Only render this page if the feature flag is enabled
+if (!siteConfig.features.projects) {
+  return Astro.redirect('/404');
+}
+---
+
+<BaseLayout
+  title={`Projects | ${siteConfig.title}`}
+  description="Projects and portfolio work by Olivia Knoedt"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-twilight-indigo dark:text-eggshell">
+        Projects
+      </h1>
+      <div class="space-y-8">
+        <p class="text-lg text-twilight-indigo/70 dark:text-eggshell/70">Projects coming soon...</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

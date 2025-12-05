@@ -1,20 +1,18 @@
 ---
 title: Lead Technology Consultant
 start: 2023-07-17 00:00:00 +0000
-description: "I'm currently working with 101 Ways as a Lead Technology Consultant - helping technology leaders solve challenging 
+description: "I'm currently working with Crosstide as a Lead Technology Consultant - helping technology leaders solve challenging 
 problems and build great digital products. I'm responsible for driving successful client engagements via hands-on, best practice 
 software development."
-company: 101 Ways
-company_url: https://www.101ways.com/
+company: Crosstide Consulting
+company_url: https://crosstideconsulting.com/
 tech: aws, typescript, react, java, python, nextjs
-company_logo: 101ways_logo.png
-company_hero: 101ways_hero.jpg
-company_hero_alt: 101ways_hero.webp
+company_logo: crosstide.jpeg
 ---
 
 ## Summary
 
-I'm currently working with 101 Ways as a Lead Technology Consultant - helping technology leaders solve challenging
+I'm currently working with Crosstide as a Lead Technology Consultant - helping technology leaders solve challenging
 problems and build great digital products.
 
 ## Role & Responsibilities

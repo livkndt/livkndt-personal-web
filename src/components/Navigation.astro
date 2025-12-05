@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config';
+
 interface Props {
   mobile?: boolean;
 }
@@ -10,6 +12,8 @@ const navItems = [
   { href: '/about', label: 'About' },
   { href: '/experience', label: 'Experience' },
   { href: '/blog', label: 'Blog' },
+  // Conditionally add Projects if feature flag is enabled
+  ...(siteConfig.features.projects ? [{ href: '/projects', label: 'Projects' }] : []),
 ];
 
 const isActive = (href: string) => {

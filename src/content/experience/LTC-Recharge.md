@@ -1,6 +1,7 @@
 ---
 title: Lead Technology Consultant
 start: 2023-08-01 00:00:00 +0000
+end: 2024-08-01 00:00:00 +0000
 description: "The engagement with Recharge has included a full re-platforming onto a modern, cloud-native, event-driven, 
 microservices architecture using a modern tech stack."
 company: Recharge.com
