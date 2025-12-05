@@ -71,6 +71,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
 
     <!-- Plausible Analytics -->
     <script
+      is:inline
       defer
       data-domain={siteConfig.analytics.plausible.domain}
       src={siteConfig.analytics.plausible.scriptSrc}></script>

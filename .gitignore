@@ -28,6 +28,8 @@ pnpm-debug.log*
 # testing
 coverage/
 .nyc_output/
+test-results/
+playwright-report/
 
 # misc
 .cache/
