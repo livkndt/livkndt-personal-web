@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply border-peach-fuzz/20 dark:border-dry-sage/30;
+    @apply border-eggshell/20 dark:border-twilight-indigo/30;
   }
 
   html {
@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply font-sans bg-peach-fuzz dark:bg-olive text-olive dark:text-peach-fuzz transition-colors duration-200;
+    @apply font-sans bg-eggshell dark:bg-twilight-indigo text-twilight-indigo dark:text-eggshell transition-colors duration-200;
   }
 
   /* Headings use Alice font */
@@ -27,12 +27,12 @@
 
   /* Focus styles for accessibility */
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-carrot-orange dark:outline-dry-sage;
+    @apply outline-2 outline-offset-2 outline-burnt-peach dark:outline-muted-teal;
   }
 
   /* Skip to main content link */
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-carrot-orange focus:text-peach-fuzz focus:rounded-md focus:font-medium;
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-burnt-peach focus:text-eggshell focus:rounded-md focus:font-medium;
   }
 }
 
@@ -42,15 +42,15 @@
   }
 
   .prose a {
-    @apply text-carrot-orange dark:text-dry-sage hover:underline;
+    @apply text-burnt-peach dark:text-muted-teal hover:underline;
   }
 
   .prose code {
-    @apply bg-dry-sage/30 dark:bg-dry-sage/20 px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-apricot-cream/30 dark:bg-muted-teal/20 px-1.5 py-0.5 rounded text-sm font-mono;
   }
 
   .prose pre {
-    @apply bg-dry-sage/30 dark:bg-dry-sage/20 p-4 rounded-lg overflow-x-auto;
+    @apply bg-apricot-cream/30 dark:bg-muted-teal/20 p-4 rounded-lg overflow-x-auto;
   }
 
   .prose pre code {

@@ -54,7 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-    
+
     <!-- Google Fonts: DM Sans & Alice -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,8 +67,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
     <script
       defer
       data-domain={siteConfig.analytics.plausible.domain}
-      src={siteConfig.analytics.plausible.scriptSrc}
-    ></script>
+      src={siteConfig.analytics.plausible.scriptSrc}></script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -91,4 +90,3 @@ const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
     </script>
   </body>
 </html>
-

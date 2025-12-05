@@ -8,9 +8,7 @@ export async function GET(context: APIContext) {
     return import.meta.env.PROD ? !data.draft : true;
   });
 
-  const sortedPosts = posts.sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
+  const sortedPosts = posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
   return rss({
     title: siteConfig.title,
@@ -25,4 +23,3 @@ export async function GET(context: APIContext) {
     customData: `<language>en-gb</language>`,
   });
 }
-

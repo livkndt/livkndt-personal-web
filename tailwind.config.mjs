@@ -9,11 +9,11 @@ export default {
         heading: ['Alice', 'serif'],
       },
       colors: {
-        olive: '#7c6a0a',
-        'dry-sage': '#babd8d',
-        'peach-fuzz': '#ffdac6',
-        'carrot-orange': '#fa9500',
-        'cayenne-red': '#eb6424',
+        eggshell: '#f4f1de',
+        'burnt-peach': '#e07a5f',
+        'twilight-indigo': '#3d405b',
+        'muted-teal': '#81b29a',
+        'apricot-cream': '#f2cc8f',
       },
       typography: {
         DEFAULT: {

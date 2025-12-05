@@ -13,6 +13,7 @@ pnpm install
 ## 2. Configure Your Site
 
 Edit `src/config.ts` and update:
+
 - Your name
 - Social media links (LinkedIn, GitHub, Medium, Substack)
 - Domain URL
@@ -80,4 +81,3 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 - Check GitHub issues (if public)
 
 Happy building! 🚀
-

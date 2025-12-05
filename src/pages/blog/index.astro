@@ -8,9 +8,7 @@ const allPosts = await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
 });
 
-const posts = allPosts.sort(
-  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-);
+const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <BaseLayout
@@ -19,52 +17,53 @@ const posts = allPosts.sort(
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-olive dark:text-peach-fuzz">
-        Blog
-      </h1>
-      {posts.length === 0 ? (
-        <p class="text-lg text-olive/70 dark:text-peach-fuzz/70">
-          No blog posts yet. Check back soon!
-        </p>
-      ) : (
-        <ul class="space-y-8">
-          {posts.map((post) => (
-            <li>
-              <article class="border-b border-dry-sage/30 dark:border-dry-sage/20 pb-8 last:border-0">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-3">
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="text-olive dark:text-peach-fuzz hover:text-carrot-orange dark:hover:text-dry-sage transition-colors focus:outline-none focus:ring-2 focus:ring-carrot-orange dark:focus:ring-dry-sage focus:ring-offset-2 dark:focus:ring-offset-olive rounded"
-                  >
-                    {post.data.title}
-                  </a>
-                </h2>
-                <p class="text-olive/70 dark:text-peach-fuzz/70 mb-4">{post.data.description}</p>
-                <div class="flex flex-wrap items-center gap-4 text-sm text-olive/60 dark:text-peach-fuzz/60">
-                  <time datetime={post.data.pubDate.toISOString()}>
-                    {format(post.data.pubDate, 'd MMMM yyyy')}
-                  </time>
-                  {post.data.tags.length > 0 && (
-                    <>
-                      <span>•</span>
-                      <ul class="flex flex-wrap gap-2">
-                        {post.data.tags.map((tag) => (
-                          <li>
-                            <span class="px-2 py-1 bg-dry-sage/30 dark:bg-dry-sage/20 text-olive dark:text-peach-fuzz rounded text-xs">
-                              {tag}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
-      )}
+      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-burnt-peach dark:text-eggshell">Blog</h1>
+      {
+        posts.length === 0 ? (
+          <p class="text-lg text-burnt-peach/70 dark:text-eggshell/70">
+            No blog posts yet. Check back soon!
+          </p>
+        ) : (
+          <ul class="space-y-8">
+            {posts.map((post) => (
+              <li>
+                <article class="border-b border-apricot-cream/30 dark:border-apricot-cream/20 pb-8 last:border-0">
+                  <h2 class="text-2xl sm:text-3xl font-bold mb-3">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="text-burnt-peach dark:text-eggshell hover:text-burnt-peach dark:hover:text-apricot-cream transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-apricot-cream focus:ring-offset-2 dark:focus:ring-offset-burnt-peach rounded"
+                    >
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  <p class="text-burnt-peach/70 dark:text-eggshell/70 mb-4">
+                    {post.data.description}
+                  </p>
+                  <div class="flex flex-wrap items-center gap-4 text-sm text-burnt-peach/60 dark:text-eggshell/60">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {format(post.data.pubDate, 'd MMMM yyyy')}
+                    </time>
+                    {post.data.tags.length > 0 && (
+                      <>
+                        <span>•</span>
+                        <ul class="flex flex-wrap gap-2">
+                          {post.data.tags.map((tag) => (
+                            <li>
+                              <span class="px-2 py-1 bg-apricot-cream/30 dark:bg-apricot-cream/20 text-burnt-peach dark:text-eggshell rounded text-xs">
+                                {tag}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        )
+      }
     </div>
   </div>
 </BaseLayout>
-

@@ -11,10 +11,13 @@ const allExperiences = await getCollection('experience');
 const processedExperiences = allExperiences.map((exp) => {
   // Extract responsibilities from the raw markdown content
   const responsibilities = extractResponsibilities(exp.body);
-  
+
   // Parse tech stack
   const tech = exp.data.tech
-    ? exp.data.tech.split(',').map((t) => t.trim()).filter((t) => t.length > 0)
+    ? exp.data.tech
+        .split(',')
+        .map((t) => t.trim())
+        .filter((t) => t.length > 0)
     : [];
 
   return {
@@ -48,61 +51,64 @@ function formatPeriod(start: Date, end?: Date): string {
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-olive dark:text-peach-fuzz">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-burnt-peach dark:text-eggshell">
         Experience
       </h1>
       <div class="space-y-12">
-        {sortedExperiences.map((exp) => (
-          <article class="border-l-4 border-carrot-orange dark:border-dry-sage pl-6 sm:pl-8">
-            <div class="mb-4">
-              <h2 class="text-2xl sm:text-3xl font-bold text-olive dark:text-peach-fuzz mb-2">
-                {exp.data.title}
-              </h2>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 text-olive/80 dark:text-peach-fuzz/80 mb-2">
-                {exp.data.company_url ? (
-                  <a
-                    href={exp.data.company_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="font-semibold hover:text-carrot-orange dark:hover:text-dry-sage transition-colors focus:outline-none focus:ring-2 focus:ring-carrot-orange dark:focus:ring-dry-sage focus:ring-offset-2 dark:focus:ring-offset-olive rounded"
-                  >
-                    {exp.data.company}
-                  </a>
-                ) : (
-                  <p class="font-semibold">{exp.data.company}</p>
-                )}
-                <span class="hidden sm:inline">•</span>
-                <p>{formatPeriod(exp.data.start, exp.data.end)}</p>
-              </div>
-              {exp.data.description && (
-                <p class="text-olive/70 dark:text-peach-fuzz/70 mb-4">{exp.data.description}</p>
-              )}
-              {exp.tech && exp.tech.length > 0 && (
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {exp.tech.map((tech) => (
-                    <span class="px-2 py-1 bg-dry-sage/40 dark:bg-dry-sage/20 text-olive dark:text-peach-fuzz rounded text-sm">
-                      {tech}
-                    </span>
-                  ))}
+        {
+          sortedExperiences.map((exp) => (
+            <article class="border-l-4 border-burnt-peach dark:border-muted-teal pl-6 sm:pl-8">
+              <div class="mb-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-burnt-peach dark:text-eggshell mb-2">
+                  {exp.data.title}
+                </h2>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 text-burnt-peach/80 dark:text-eggshell/80 mb-2">
+                  {exp.data.company_url ? (
+                    <a
+                      href={exp.data.company_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-semibold hover:text-burnt-peach dark:hover:text-muted-teal transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo rounded"
+                    >
+                      {exp.data.company}
+                    </a>
+                  ) : (
+                    <p class="font-semibold">{exp.data.company}</p>
+                  )}
+                  <span class="hidden sm:inline">•</span>
+                  <p>{formatPeriod(exp.data.start, exp.data.end)}</p>
                 </div>
+                {exp.data.description && (
+                  <p class="text-burnt-peach/70 dark:text-eggshell/70 mb-4">
+                    {exp.data.description}
+                  </p>
+                )}
+                {exp.tech && exp.tech.length > 0 && (
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {exp.tech.map((tech) => (
+                      <span class="px-2 py-1 bg-muted-teal/40 dark:bg-muted-teal/20 text-burnt-peach dark:text-eggshell rounded text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {exp.responsibilities && exp.responsibilities.length > 0 && (
+                <ul class="space-y-2 text-burnt-peach/70 dark:text-eggshell/70">
+                  {exp.responsibilities.map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-burnt-peach dark:text-muted-teal mt-1.5" aria-hidden="true">
+                        •
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               )}
-            </div>
-            {exp.responsibilities && exp.responsibilities.length > 0 && (
-              <ul class="space-y-2 text-olive/70 dark:text-peach-fuzz/70">
-                {exp.responsibilities.map((item) => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-carrot-orange dark:text-dry-sage mt-1.5" aria-hidden="true">
-                      •
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </article>
-        ))}
+            </article>
+          ))
+        }
       </div>
     </div>
   </div>
 </BaseLayout>
-

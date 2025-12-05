@@ -34,12 +34,14 @@ A modern, minimal personal website and portfolio with an integrated blog, built 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <your-repo-url>
 cd livkndt-personal-web
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -52,6 +54,7 @@ pnpm install
    - Update `public/robots.txt` with your domain
 
 4. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -89,6 +92,7 @@ npm run dev
 6. Click "Publish" to create a commit and deploy
 
 **Mobile Workflow:**
+
 - Open your site on mobile
 - Navigate to `/admin`
 - Log in with your Git provider
@@ -99,6 +103,7 @@ npm run dev
 
 1. Create a new markdown file in `src/content/blog/`
 2. Add frontmatter:
+
 ```markdown
 ---
 title: 'Your Post Title'
@@ -115,6 +120,7 @@ Your content here...
 3. Commit and push to your repository
 
 **Mobile Git Workflow:**
+
 - Use the GitHub mobile app
 - Navigate to your repository
 - Edit files directly in the app
@@ -265,4 +271,3 @@ All rights reserved. This is a personal website.
 ## Support
 
 For issues or questions, please open an issue on GitHub.
-

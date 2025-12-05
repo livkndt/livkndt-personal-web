@@ -8,4 +8,3 @@ describe('Date formatting', () => {
     expect(formatted).toBe('15 January 2024');
   });
 });
-

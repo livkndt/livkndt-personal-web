@@ -28,35 +28,41 @@ const { Content } = await post.render();
   <article class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
     <div class="max-w-3xl mx-auto">
       <header class="mb-8">
-        <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-olive dark:text-peach-fuzz">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-twilight-indigo dark:text-eggshell">
           {post.data.title}
         </h1>
-        <div class="flex flex-wrap items-center gap-4 text-sm text-olive/70 dark:text-peach-fuzz/70 mb-6">
+        <div
+          class="flex flex-wrap items-center gap-4 text-sm text-twilight-indigo/70 dark:text-eggshell/70 mb-6"
+        >
           <time datetime={post.data.pubDate.toISOString()}>
             {format(post.data.pubDate, 'd MMMM yyyy')}
           </time>
-          {post.data.updatedDate && (
-            <>
-              <span>•</span>
-              <time datetime={post.data.updatedDate.toISOString()}>
-                Updated {format(post.data.updatedDate, 'd MMMM yyyy')}
-              </time>
-            </>
-          )}
+          {
+            post.data.updatedDate && (
+              <>
+                <span>•</span>
+                <time datetime={post.data.updatedDate.toISOString()}>
+                  Updated {format(post.data.updatedDate, 'd MMMM yyyy')}
+                </time>
+              </>
+            )
+          }
           <span>•</span>
           <span>{post.data.author}</span>
         </div>
-        {post.data.tags.length > 0 && (
-          <ul class="flex flex-wrap gap-2" aria-label="Tags">
-            {post.data.tags.map((tag) => (
-              <li>
-                <span class="px-3 py-1 bg-dry-sage/40 dark:bg-dry-sage/30 text-olive dark:text-peach-fuzz rounded-full text-sm font-medium">
-                  {tag}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
+        {
+          post.data.tags.length > 0 && (
+            <ul class="flex flex-wrap gap-2" aria-label="Tags">
+              {post.data.tags.map((tag) => (
+                <li>
+                  <span class="px-3 py-1 bg-apricot-cream/40 dark:bg-apricot-cream/30 text-twilight-indigo dark:text-eggshell rounded-full text-sm font-medium">
+                    {tag}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </header>
       <div class="prose prose-lg dark:prose-invert max-w-none">
         <Content />
@@ -64,4 +70,3 @@ const { Content } = await post.render();
     </div>
   </article>
 </BaseLayout>
-

@@ -96,6 +96,7 @@ If needed, add environment variables in Project Settings → Environment Variabl
 ### Using GitHub Actions
 
 1. Create `.github/workflows/deploy.yml`:
+
 ```yaml
 name: Deploy to GitHub Pages
 
@@ -139,6 +140,7 @@ jobs:
    - Go to Settings → Pages
    - Source: GitHub Actions
 3. **Update `astro.config.mjs`**:
+
 ```javascript
 export default defineConfig({
   site: 'https://yourusername.github.io',
@@ -212,6 +214,7 @@ Preview deployments are created for pull requests automatically.
 ### Error Tracking
 
 Consider adding error tracking:
+
 - Sentry
 - LogRocket
 - Rollbar
@@ -221,6 +224,7 @@ Consider adding error tracking:
 ### SSL/TLS
 
 All platforms provide free SSL certificates:
+
 - Vercel: Automatic
 - Netlify: Automatic
 - Cloudflare: Automatic
@@ -229,6 +233,7 @@ All platforms provide free SSL certificates:
 ### Security Headers
 
 Security headers are configured in:
+
 - `netlify.toml` (Netlify)
 - `vercel.json` (Vercel)
 - Cloudflare dashboard (Cloudflare Pages)
@@ -244,8 +249,8 @@ Your content is backed up in Git. For additional backups:
 ## Support
 
 For platform-specific issues:
+
 - [Vercel Docs](https://vercel.com/docs)
 - [Netlify Docs](https://docs.netlify.com)
 - [Cloudflare Pages Docs](https://developers.cloudflare.com/pages)
 - [GitHub Pages Docs](https://docs.github.com/pages)
-

@@ -26,4 +26,3 @@ To create a new blog post:
 - **Dark Mode**: Automatic dark mode support
 
 Happy blogging!
-

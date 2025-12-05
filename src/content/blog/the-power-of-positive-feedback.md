@@ -27,4 +27,3 @@ For leaders aiming to uplift their teams, don’t neglect to give positive feedb
 This post has also been published on [Medium](https://medium.com/@oliviaknoedt/the-power-of-positive-feedback-09ba3b3eaed7).
 
 Post photo by <a href="https://unsplash.com/@nate_dumlao?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nathan Dumlao</a> on <a href="https://unsplash.com/photos/woman-in-black-shirt-holding-white-ceramic-mug-L86vy42TB-w?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  

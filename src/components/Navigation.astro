@@ -17,21 +17,22 @@ const isActive = (href: string) => {
 
 <nav aria-label="Main navigation">
   <ul class="flex items-center gap-6">
-    {navItems.map((item) => (
-      <li>
-        <a
-          href={item.href}
-          class={`text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-carrot-orange dark:focus:ring-dry-sage focus:ring-offset-2 dark:focus:ring-offset-olive rounded px-2 py-1 ${
-            isActive(item.href)
-              ? 'text-carrot-orange dark:text-dry-sage'
-              : 'text-olive dark:text-peach-fuzz/80 hover:text-carrot-orange dark:hover:text-dry-sage'
-          }`}
-          aria-current={isActive(item.href) ? 'page' : undefined}
-        >
-          {item.label}
-        </a>
-      </li>
-    ))}
+    {
+      navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo rounded px-2 py-1 ${
+              isActive(item.href)
+                ? 'text-burnt-peach dark:text-muted-teal'
+                : 'text-burnt-peach dark:text-eggshell/80 hover:text-burnt-peach dark:hover:text-muted-teal'
+            }`}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
-

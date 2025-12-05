@@ -77,6 +77,7 @@ If you prefer direct Git editing, use the GitHub mobile app.
 3. **Tap the "+" button** → "Create new file"
 4. **Name the file**: Use kebab-case, e.g., `my-new-post.md`
 5. **Add frontmatter**:
+
 ```markdown
 ---
 title: 'Your Post Title'
@@ -178,11 +179,13 @@ For a better writing experience, use a mobile markdown editor and copy-paste:
 
 ```markdown
 # Heading 1
+
 ## Heading 2
+
 ### Heading 3
 
 **bold text**
-*italic text*
+_italic text_
 
 - Bullet point
 - Another point
@@ -196,7 +199,7 @@ For a better writing experience, use a mobile markdown editor and copy-paste:
 
 `inline code`
 
-```code block```
+`code block`
 ```
 
 ### Frontmatter Template
@@ -206,9 +209,9 @@ For a better writing experience, use a mobile markdown editor and copy-paste:
 title: 'Your Post Title'
 description: 'A brief description of your post'
 pubDate: 2024-01-15
-updatedDate: 2024-01-20  # Optional
+updatedDate: 2024-01-20 # Optional
 author: 'Your Name'
-image: '/images/your-image.jpg'  # Optional
+image: '/images/your-image.jpg' # Optional
 tags: ['web development', 'astro', 'blogging']
 draft: false
 ---
@@ -226,4 +229,3 @@ If you encounter issues:
 4. Contact support if needed
 
 Happy blogging! 📱✍️
-

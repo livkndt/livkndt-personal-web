@@ -38,4 +38,3 @@ export function extractResponsibilities(content: string): string[] {
 
   return responsibilities;
 }
-

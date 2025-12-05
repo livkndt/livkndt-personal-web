@@ -55,4 +55,3 @@ test.describe('Home Page', () => {
     expect(darkClass).toContain('dark');
   });
 });
-

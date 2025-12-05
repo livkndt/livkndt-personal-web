@@ -12,16 +12,19 @@ company_logo: up42_logo.jpg
 company_hero: up42_hero.png
 company_hero_alt: up42_hero.webp
 ---
+
 ## Summary
-UP42 is a state of the art geospatial data marketplace that, for the first time, brings together a large number of 
-previously disparate data sources like high-resolution satellites, drones, IoT, and many more. UP42 enables geospatial 
+
+UP42 is a state of the art geospatial data marketplace that, for the first time, brings together a large number of
+previously disparate data sources like high-resolution satellites, drones, IoT, and many more. UP42 enables geospatial
 service providers to develop and offer industry specific solutions for their clients.
 
 # Role & Responsibilities
+
 - Working primarily as part of the frontend team, but with regular involvement and development on the backend team.
-- Involved in interviewing & onboarding new engineering team for UP42, as well as helping to set up relevant processes 
-and best technical practices.
-- Building out the 3-part MVP product from scratch on the frontend side, including a consumer marketing page for UP42, 
-a developer console and a blocks marketplace (pre-build processing blocks to use in a workflow), right the way through 
-to the initial launch.
+- Involved in interviewing & onboarding new engineering team for UP42, as well as helping to set up relevant processes
+  and best technical practices.
+- Building out the 3-part MVP product from scratch on the frontend side, including a consumer marketing page for UP42,
+  a developer console and a blocks marketplace (pre-build processing blocks to use in a workflow), right the way through
+  to the initial launch.
 - Technical presentations to the client (Airbus) around technical progress of the product.
