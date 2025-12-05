@@ -7,8 +7,8 @@ test.describe('Blog Pages', () => {
     // Check page title
     await expect(page).toHaveTitle(/Blog/);
 
-    // Check main heading
-    const heading = page.getByRole('heading', { name: 'Blog' });
+    // Check main heading (h1, not h2 that might contain "Blog" in title)
+    const heading = page.getByRole('heading', { name: 'Blog', exact: true }).first();
     await expect(heading).toBeVisible();
   });
 

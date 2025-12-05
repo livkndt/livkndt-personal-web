@@ -53,13 +53,19 @@ pnpm install
    - Update `astro.config.mjs` with your domain
    - Update `public/robots.txt` with your domain
 
-4. Start the development server:
+4. (Optional) Install Playwright browsers for E2E tests:
+
+```bash
+npx playwright install chromium
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:4321](http://localhost:4321) in your browser
+6. Open [http://localhost:4321](http://localhost:4321) in your browser
 
 ## Project Structure
 
@@ -188,6 +194,7 @@ Edit `src/pages/experience.astro` and update the `experiences` array with your w
 - `npm run test` - Run unit tests
 - `npm run test:ui` - Run tests with UI
 - `npm run test:coverage` - Run tests with coverage
+- `npm run test:e2e` - Run E2E tests (requires Playwright browsers installed)
 
 ## Testing
 
