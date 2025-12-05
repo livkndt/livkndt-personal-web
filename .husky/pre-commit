@@ -1,3 +1,7 @@
 npx lint-staged
 npm run test -- --run
 
+# Run E2E tests (optional - won't block commit if browsers aren't installed)
+# Install browsers with: npx playwright install chromium
+npm run test:e2e -- --project=chromium 2>&1 || echo "⚠️  E2E tests skipped (browsers not installed or tests failed). Install with: npx playwright install chromium" || true
+

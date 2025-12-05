@@ -11,9 +11,8 @@ export const siteConfig = {
     substack: 'https://substack.com/@livkndt',
   },
   analytics: {
-    plausible: {
-      domain: 'yourdomain.com', // Update with your domain for Plausible
-      scriptSrc: 'https://plausible.io/js/script.js',
+    googleAnalytics: {
+      measurementId: 'G-MTPS2265QT', // Update with your Google Analytics 4 Measurement ID
     },
   },
 };

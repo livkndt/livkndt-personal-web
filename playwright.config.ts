@@ -35,9 +35,16 @@ export default defineConfig({
       use: { ...devices['iPhone 12'] },
     },
   ],
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:4321',
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: process.env.CI
+    ? {
+        command: 'npx serve@latest dist -l 4321',
+        url: 'http://localhost:4321',
+        reuseExistingServer: false,
+        timeout: 120000,
+      }
+    : {
+        command: 'npm run dev',
+        url: 'http://localhost:4321',
+        reuseExistingServer: true,
+      },
 });

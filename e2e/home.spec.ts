@@ -22,7 +22,7 @@ test.describe('Home Page', () => {
   test('should have accessible navigation', async ({ page }) => {
     await page.goto('/');
 
-    // Check navigation links
+    // Check navigation links - navigation is inside header
     const nav = page.getByRole('navigation', { name: 'Main navigation' });
     await expect(nav).toBeVisible();
 

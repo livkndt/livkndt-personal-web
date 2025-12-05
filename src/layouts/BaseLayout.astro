@@ -69,12 +69,25 @@ const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
       href="https://cdn-uicons.flaticon.com/2.5.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
     />
 
-    <!-- Plausible Analytics -->
-    <script
-      is:inline
-      defer
-      data-domain={siteConfig.analytics.plausible.domain}
-      src={siteConfig.analytics.plausible.scriptSrc}></script>
+    <!-- Google Analytics -->
+    {
+      siteConfig.analytics.googleAnalytics.measurementId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.googleAnalytics.measurementId}`}
+          />
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${siteConfig.analytics.googleAnalytics.measurementId}');`}
+          />
+        </>
+      )
+    }
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
