@@ -38,6 +38,8 @@ const sortedExperiences = processedExperiences.sort((a, b) => {
   return bDate.getTime() - aDate.getTime();
 });
 
+const CDN_URL = 'https://d19w7e3j8gkywb.cloudfront.net/';
+
 function formatPeriod(start: Date, end?: Date): string {
   const startFormatted = format(start, 'MMM yyyy');
   const endFormatted = end ? format(end, 'MMM yyyy') : 'Present';
@@ -59,24 +61,37 @@ function formatPeriod(start: Date, end?: Date): string {
           sortedExperiences.map((exp) => (
             <article class="border-l-4 border-burnt-peach dark:border-muted-teal pl-6 sm:pl-8">
               <div class="mb-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-twilight-indigo dark:text-eggshell mb-2">
-                  {exp.data.title}
-                </h2>
-                <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 text-twilight-indigo/80 dark:text-eggshell/80 mb-2">
-                  {exp.data.company_url ? (
-                    <a
-                      href={exp.data.company_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="font-semibold hover:text-burnt-peach dark:hover:text-muted-teal transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo rounded"
-                    >
-                      {exp.data.company}
-                    </a>
-                  ) : (
-                    <p class="font-semibold">{exp.data.company}</p>
+                <div class="flex items-start gap-4 mb-3">
+                  {/* Company Logo */}
+                  {exp.data.company_logo && (
+                    <img
+                      src={`${CDN_URL}${exp.data.company_logo}`}
+                      alt={`${exp.data.company} logo`}
+                      class="w-16 h-16 sm:w-20 sm:h-20 object-contain flex-shrink-0 rounded-lg bg-white dark:bg-twilight-indigo p-2 border border-apricot-cream/30 dark:border-muted-teal/20"
+                      loading="lazy"
+                    />
                   )}
-                  <span class="hidden sm:inline">•</span>
-                  <p>{formatPeriod(exp.data.start, exp.data.end)}</p>
+                  <div class="flex-1 min-w-0">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-twilight-indigo dark:text-eggshell mb-2">
+                      {exp.data.title}
+                    </h2>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 text-twilight-indigo/80 dark:text-eggshell/80 mb-2">
+                      {exp.data.company_url ? (
+                        <a
+                          href={exp.data.company_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="font-semibold hover:text-burnt-peach dark:hover:text-muted-teal transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo rounded"
+                        >
+                          {exp.data.company}
+                        </a>
+                      ) : (
+                        <p class="font-semibold">{exp.data.company}</p>
+                      )}
+                      <span class="hidden sm:inline">•</span>
+                      <p>{formatPeriod(exp.data.start, exp.data.end)}</p>
+                    </div>
+                  </div>
                 </div>
                 {exp.data.description && (
                   <p class="text-twilight-indigo/70 dark:text-eggshell/70 mb-4">
@@ -86,7 +101,7 @@ function formatPeriod(start: Date, end?: Date): string {
                 {exp.tech && exp.tech.length > 0 && (
                   <div class="flex flex-wrap gap-2 mb-4">
                     {exp.tech.map((tech) => (
-                      <span class="px-2 py-1 bg-muted-teal/40 dark:bg-muted-teal/20 text-twilight-indigo dark:text-eggshell rounded text-sm">
+                      <span class="px-2 py-1 bg-apricot-cream/40 dark:bg-apricot-cream/30 text-twilight-indigo dark:text-eggshell rounded text-sm">
                         {tech}
                       </span>
                     ))}

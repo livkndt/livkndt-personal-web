@@ -23,6 +23,17 @@ test.describe('Home Page', () => {
   test('should have accessible navigation', async ({ page }) => {
     await page.goto('/');
 
+    // On mobile, we need to open the hamburger menu first
+    const projectName = test.info().project.name;
+    const isMobile = projectName?.includes('Mobile') ?? false;
+
+    if (isMobile) {
+      // Open mobile menu
+      const menuButton = page.getByRole('button', { name: 'Toggle menu' });
+      await expect(menuButton).toBeVisible();
+      await menuButton.click();
+    }
+
     // Check navigation links - get the inner nav (Navigation component, not header wrapper)
     // The header has two nav elements with "Main navigation", we want the inner one
     const nav = page.getByRole('navigation', { name: 'Main navigation' }).nth(1);

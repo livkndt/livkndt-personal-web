@@ -72,6 +72,15 @@
             }
           ]
         },
+        "company_logo": {
+          "type": "string"
+        },
+        "company_hero": {
+          "type": "string"
+        },
+        "company_hero_alt": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }

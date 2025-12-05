@@ -24,6 +24,9 @@ const experience = defineCollection({
     end: z.coerce.date().optional(),
     description: z.string(),
     tech: z.union([z.string(), z.null(), z.undefined()]).optional(), // Comma-separated string, will be parsed
+    company_logo: z.string().optional(),
+    company_hero: z.string().optional(),
+    company_hero_alt: z.string().optional(),
   }),
 });
 
