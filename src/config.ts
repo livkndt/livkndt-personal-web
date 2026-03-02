@@ -8,6 +8,9 @@ export const siteConfig = {
     linkedin: 'https://www.linkedin.com/in/oliviaknoedt/',
     github: 'https://github.com/livkndt',
     medium: 'https://medium.com/@oliviaknoedt',
+    substackTech: 'https://balancingthestack.substack.com/',
+    substackMakes: 'https://olivesmakes.substack.com/',
+    ravelry: 'https://www.ravelry.com/people/livkndt',
     substack: 'https://substack.com/@livkndt',
   },
   analytics: {
