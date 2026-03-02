@@ -2,12 +2,11 @@ export const siteConfig = {
   title: 'Olivia Knoedt - Software Engineer',
   description:
     'Experienced software engineer specialising in modern web development. Portfolio and blog.',
-  url: 'https://yourdomain.com', // Update with your actual domain
+  url: 'https://livkndt.com',
   author: 'Olivia Knoedt',
   social: {
     linkedin: 'https://www.linkedin.com/in/oliviaknoedt/',
     github: 'https://github.com/livkndt',
-    medium: 'https://medium.com/@oliviaknoedt',
     substackTech: 'https://balancingthestack.substack.com/',
     substackMakes: 'https://olivesmakes.substack.com/',
     ravelry: 'https://www.ravelry.com/people/livkndt',
