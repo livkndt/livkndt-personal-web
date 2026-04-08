@@ -97,6 +97,8 @@ jobs:
 
       - name: Build for E2E tests
         run: npm run build
+        env:
+          PUBLIC_ENABLE_PROJECTS: 'true'
 
       - name: Run E2E tests
         run: npm run test:e2e
