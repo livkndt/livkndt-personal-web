@@ -1,0 +1,84 @@
+name: Maintenance
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'
+    - cron: '0 8 1 * *'
+    - cron: '0 8 1 */3 *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  dependency-health:
+    name: Dependency Health
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 7 * * 1' || github.event.schedule == '0 8 1 * *'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Capture outdated dependencies report
+        run: npm outdated --long > outdated-report.txt || true
+
+      - name: Upload outdated report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: outdated-report
+          path: outdated-report.txt
+          retention-days: 14
+
+  quarterly-review-issue:
+    name: Quarterly Security Review Reminder
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 8 1 */3 *'
+    steps:
+      - name: Create quarterly maintenance issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const now = new Date();
+            const year = now.getUTCFullYear();
+            const quarter = Math.floor(now.getUTCMonth() / 3) + 1;
+            const title = `[Maintenance] Security review Q${quarter} ${year}`;
+            const body = [
+              'Quarterly maintenance checklist:',
+              '- [ ] Review CSP and security headers',
+              '- [ ] Validate security.txt contact and expiry',
+              '- [ ] Confirm incident contact details are current',
+              '- [ ] Review third-party script sources and redirects/rewrites',
+              '',
+              'Reference: `SECURITY_MAINTENANCE.md`',
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+
+            const exists = issues.some((issue) => issue.title === title);
+            if (!exists) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['security', 'maintenance'],
+              });
+            }

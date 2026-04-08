@@ -123,4 +123,24 @@ describe('security hardening config', () => {
     expect(prTemplate).toContain('generated artifacts');
     expect(prTemplate).toContain('security-sensitive');
   });
+
+  it('defines phase five maintenance automation and runbook', () => {
+    expect(existsSync('.github/workflows/maintenance.yml')).toBe(true);
+    expect(existsSync('SECURITY_MAINTENANCE.md')).toBe(true);
+
+    const maintenanceWorkflow = readFileSync('.github/workflows/maintenance.yml', 'utf8');
+    const maintenanceRunbook = readFileSync('SECURITY_MAINTENANCE.md', 'utf8');
+
+    expect(maintenanceWorkflow).toContain("cron: '0 7 * * 1'");
+    expect(maintenanceWorkflow).toContain("cron: '0 8 1 * *'");
+    expect(maintenanceWorkflow).toContain("cron: '0 8 1 */3 *'");
+    expect(maintenanceWorkflow).toContain('npm audit --omit=dev --audit-level=high');
+    expect(maintenanceWorkflow).toContain('npm outdated');
+
+    expect(maintenanceRunbook).toContain('Weekly');
+    expect(maintenanceRunbook).toContain('Monthly');
+    expect(maintenanceRunbook).toContain('Quarterly');
+    expect(maintenanceRunbook).toContain('CSP');
+    expect(maintenanceRunbook).toContain('security.txt');
+  });
 });
