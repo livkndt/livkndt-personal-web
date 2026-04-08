@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const REQUIRED_CSP_DIRECTIVES = [
@@ -86,5 +86,20 @@ describe('security hardening config', () => {
     expect(scriptMatch?.[1]).toBeDefined();
     expect(scriptMatch?.[1]).not.toContain('^');
     expect(scriptMatch?.[1]).not.toContain('~');
+  });
+
+  it('defines phase three repository guardrail files', () => {
+    expect(existsSync('.github/CODEOWNERS')).toBe(true);
+    expect(existsSync('.github/pull_request_template.md')).toBe(true);
+    expect(existsSync('.github/workflows/security.yml')).toBe(true);
+  });
+
+  it('runs security checks in CI workflow', () => {
+    const securityWorkflow = readFileSync('.github/workflows/security.yml', 'utf8');
+
+    expect(securityWorkflow).toContain('name: Security');
+    expect(securityWorkflow).toContain('CodeQL');
+    expect(securityWorkflow).toContain('gitleaks');
+    expect(securityWorkflow).toContain('npm audit --omit=dev --audit-level=high');
   });
 });
