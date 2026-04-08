@@ -61,8 +61,6 @@ jobs:
               '- [ ] Validate security.txt contact and expiry',
               '- [ ] Confirm incident contact details are current',
               '- [ ] Review third-party script sources and redirects/rewrites',
-              '',
-              'Reference: `SECURITY_MAINTENANCE.md`',
             ].join('\n');
 
             const { data: issues } = await github.rest.issues.listForRepo({
