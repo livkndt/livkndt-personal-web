@@ -102,4 +102,25 @@ describe('security hardening config', () => {
     expect(securityWorkflow).toContain('gitleaks');
     expect(securityWorkflow).toContain('npm audit --omit=dev --audit-level=high');
   });
+
+  it('defines cursor AI guardrail rules', () => {
+    expect(existsSync('.cursor/rules/ai-agent-guardrails.mdc')).toBe(true);
+
+    const agentRules = readFileSync('.cursor/rules/ai-agent-guardrails.mdc', 'utf8');
+
+    expect(agentRules).toContain('.astro');
+    expect(agentRules).toContain('dist');
+    expect(agentRules).toContain('npm run lint');
+    expect(agentRules).toContain('npm run test -- --run');
+    expect(agentRules).toContain('npm run build');
+    expect(agentRules).toContain('CSP');
+  });
+
+  it('includes AI definition of done checks in PR template', () => {
+    const prTemplate = readFileSync('.github/pull_request_template.md', 'utf8');
+
+    expect(prTemplate).toContain('AI Agent Definition of Done');
+    expect(prTemplate).toContain('generated artifacts');
+    expect(prTemplate).toContain('security-sensitive');
+  });
 });

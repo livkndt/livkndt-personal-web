@@ -1,0 +1,35 @@
+---
+description: Security and quality guardrails for AI-generated changes
+alwaysApply: true
+---
+
+# AI Agent Guardrails
+
+## Scope
+
+- Treat this repository as production-facing and public-internet reachable.
+- Prefer small, reviewable changes with explicit validation.
+
+## Do Not Edit Generated Artifacts
+
+- Never manually edit generated artifacts in `.astro/` or `dist/`.
+- If these files change during local commands, do not include them in commits unless explicitly requested.
+
+## Required Validation Before Merge
+
+- Run `npm run lint`.
+- Run `npm run test -- --run`.
+- Run `npm run build`.
+- If dependencies changed, run `npm audit --omit=dev --audit-level=high`.
+
+## Security-Sensitive Changes
+
+- If touching headers, CSP, auth, env/config, redirects/rewrites, or third-party script sources:
+  - explain the risk and mitigation in the PR,
+  - include tests or checks that prevent regression,
+  - confirm no secrets were added.
+
+## Dependency and Supply Chain Hygiene
+
+- Pin externally loaded script versions where practical.
+- Prefer dependency updates that avoid breaking changes unless explicitly requested.

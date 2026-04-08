@@ -21,6 +21,12 @@
 - [ ] `npm run build`
 - [ ] CI checks are green
 
+## AI Agent Definition of Done
+
+- [ ] I did not modify generated artifacts (`.astro/`, `dist/`) unless explicitly intended.
+- [ ] For security-sensitive changes (headers, CSP, auth, config, third-party scripts), I documented risk and mitigation.
+- [ ] I added or updated tests/checks that prevent the same regression class.
+
 ## Notes
 
 <!-- Add rollout/backout details if needed. -->
