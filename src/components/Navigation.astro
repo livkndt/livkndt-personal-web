@@ -35,8 +35,8 @@ const isActive = (href: string) => {
               mobile ? 'block py-2' : ''
             } ${
               isActive(item.href)
-                ? 'text-burnt-peach dark:text-muted-teal'
-                : 'text-burnt-peach dark:text-eggshell/80 hover:text-burnt-peach dark:hover:text-muted-teal'
+                ? 'text-twilight-indigo dark:text-eggshell bg-burnt-peach/20 dark:bg-muted-teal/30 ring-1 ring-burnt-peach/40 dark:ring-muted-teal/50'
+                : 'text-twilight-indigo/70 dark:text-eggshell/80 hover:text-twilight-indigo dark:hover:text-eggshell hover:bg-apricot-cream/30 dark:hover:bg-muted-teal/20'
             }`}
             aria-current={isActive(item.href) ? 'page' : undefined}
             data-mobile-link={mobile ? 'true' : undefined}
