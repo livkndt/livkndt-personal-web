@@ -1,114 +1,46 @@
-# Personal Website & Blog
+# livkndt-personal-web
 
-A modern, minimal personal website and portfolio with an integrated blog, built with Astro and optimised for mobile-first content management.
+Personal website and blog built with Astro, Tailwind, and Decap CMS, deployed on Netlify.
 
-## Features
-
-- 🎨 **Modern Design**: Clean, minimal, and professional aesthetic
-- 📱 **Mobile-First**: Fully responsive design that works flawlessly on all devices
-- 🌙 **Dark Mode**: Automatic dark mode support with manual toggle
-- ♿ **Accessible**: WCAG 2.1 AA compliant with semantic HTML and proper ARIA labels
-- 🚀 **Performant**: Optimised for Lighthouse scores of 95+ across all metrics
-- 📝 **Blog**: Integrated blog with markdown support
-- 📊 **Analytics**: Free analytics with Google Analytics 4
-- 🔒 **Secure**: CSP headers, secure dependencies, and security best practices
-- 🧪 **Tested**: Unit tests and E2E tests for critical paths
-- 🔄 **CI/CD**: Automated testing and deployment pipeline
-
-## Tech Stack
-
-- **Framework**: [Astro](https://astro.build/) - Modern static site generator
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- **CMS**: [Decap CMS](https://decapcms.org/) (formerly Netlify CMS) - Git-based CMS
-- **Language**: TypeScript
-- **Testing**: Vitest (unit tests), Playwright (E2E tests)
-- **Hosting**: Vercel/Netlify/Cloudflare Pages (static hosting)
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
 
-- Node.js 20 or higher
-- npm, pnpm, or yarn
+- Node.js 20+
+- npm
 
-### Installation
-
-1. Clone the repository:
+### Local setup
 
 ```bash
 git clone <your-repo-url>
 cd livkndt-personal-web
-```
-
-2. Install dependencies:
-
-```bash
 npm install
-# or
-pnpm install
-```
-
-3. Update configuration:
-   - Edit `src/config.ts` with your personal information
-   - Update `astro.config.mjs` with your domain
-   - Update `public/robots.txt` with your domain
-
-4. (Optional) Install Playwright browsers for E2E tests:
-
-```bash
-npx playwright install chromium
-```
-
-5. Start the development server:
-
-```bash
 npm run dev
 ```
 
-6. Open [http://localhost:4321](http://localhost:4321) in your browser
+Open `http://localhost:4321`.
 
-## Project Structure
+## Configuration
 
-```
-├── public/
-│   ├── admin/          # Decap CMS configuration
-│   └── images/         # Static images
-├── src/
-│   ├── components/     # Reusable components
-│   ├── content/        # Blog posts (markdown)
-│   ├── layouts/        # Page layouts
-│   ├── pages/          # Astro pages
-│   ├── styles/         # Global styles
-│   └── config.ts       # Site configuration
-├── e2e/                # E2E tests
-└── .github/workflows/  # CI/CD configuration
-```
+Update these files for your own details:
 
-## Content Management
+- `src/config.ts` (name, social links, analytics, feature flags)
+- `astro.config.mjs` (canonical site URL)
+- `public/robots.txt` (sitemap URL)
+- `public/.well-known/security.txt` (security contact details)
 
-### Creating Blog Posts
+## Content Publishing
 
-#### Option 1: Using Decap CMS (Recommended for Mobile)
+### Option A: Decap CMS on Netlify (recommended)
 
-1. Deploy your site to Netlify (or configure Git Gateway for other hosts)
-2. Navigate to `https://yourdomain.com/admin`
-3. Log in with your Git provider
-4. Click "New Blog Post"
-5. Fill in the form and write your content in markdown
-6. Click "Publish" to create a commit and deploy
+1. Deploy to Netlify.
+2. In Netlify, enable Identity and Git Gateway.
+3. Visit `/admin` on your site.
+4. Create, edit, and publish posts from the CMS UI (desktop or mobile).
 
-**Mobile Workflow:**
+### Option B: Commit markdown directly
 
-- Open your site on mobile
-- Navigate to `/admin`
-- Log in with your Git provider
-- Create and edit posts with the mobile-friendly interface
-- Preview your markdown before publishing
-
-#### Option 2: Direct Git Editing
-
-1. Create a new markdown file in `src/content/blog/`
-2. Add frontmatter:
+Create files in `src/content/blog/` with frontmatter like:
 
 ```markdown
 ---
@@ -119,184 +51,70 @@ author: 'Your Name'
 tags: ['tag1', 'tag2']
 draft: false
 ---
-
-Your content here...
 ```
 
-3. Commit and push to your repository
+## Netlify Deployment
 
-**Mobile Git Workflow:**
+1. Push your branch to GitHub.
+2. Import the repository in Netlify.
+3. Build command: `npm run build`
+4. Publish directory: `dist`
+5. Enable Identity + Git Gateway if using Decap CMS.
 
-- Use the GitHub mobile app
-- Navigate to your repository
-- Edit files directly in the app
-- Commit and push changes
-- Your site will automatically rebuild
-
-### Updating Experience/Resume
-
-Edit `src/pages/experience.astro` and update the `experiences` array with your work history.
-
-## Deployment
-
-### Vercel
-
-1. Push your code to GitHub
-2. Import your repository in [Vercel](https://vercel.com)
-3. Configure build settings:
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-4. Deploy
-
-### Netlify
-
-1. Push your code to GitHub
-2. Import your repository in [Netlify](https://netlify.com)
-3. Configure build settings:
-   - Build Command: `npm run build`
-   - Publish Directory: `dist`
-4. Enable Identity and Git Gateway for Decap CMS
-5. Deploy
-
-### Cloudflare Pages
-
-1. Push your code to GitHub
-2. Import your repository in [Cloudflare Pages](https://pages.cloudflare.com)
-3. Configure build settings:
-   - Build Command: `npm run build`
-   - Build Output Directory: `dist`
-4. Deploy
-
-## Configuration
-
-### Analytics (Google Analytics 4)
-
-1. Sign up at [Google Analytics](https://analytics.google.com)
-2. Create a new property and get your Measurement ID (format: G-XXXXXXXXXX)
-3. Update `src/config.ts` with your Measurement ID
-4. The script is automatically included in the base layout
-
-### Custom Domain
-
-1. Update `astro.config.mjs` with your domain
-2. Update `src/config.ts` with your domain
-3. Update `public/robots.txt` with your domain
-4. Configure DNS according to your hosting provider's instructions
+Deployment config and headers live in `netlify.toml`.
 
 ## Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
-- `npm run test` - Run unit tests
-- `npm run test:ui` - Run tests with UI
-- `npm run test:coverage` - Run tests with coverage
-- `npm run test:e2e` - Run E2E tests (requires Playwright browsers installed)
+- `npm run dev` - local dev server
+- `npm run build` - type check and production build
+- `npm run preview` - preview production build
+- `npm run lint` - ESLint
+- `npm run format` - Prettier write
+- `npm run format:check` - Prettier check
+- `npm run test` - Vitest
+- `npm run test:e2e` - Playwright tests
 
 ## Testing
 
-### Unit Tests
-
-Unit tests are located alongside source files with `.test.ts` extension. Run with:
+### Unit tests
 
 ```bash
-npm run test
+npm run test -- --run
 ```
 
-### E2E Tests
+### E2E tests
 
-E2E tests are in the `e2e/` directory using Playwright.
-
-**First-time setup:**
-
-Install Playwright browsers (required before running tests):
+Install browsers once:
 
 ```bash
 npx playwright install --with-deps
 ```
 
-Or install only Chromium (faster, used in pre-commit hook):
+Run tests:
 
 ```bash
-npx playwright install chromium
-```
-
-**Running tests:**
-
-```bash
-# Run all E2E tests (all browsers)
 npm run test:e2e
-
-# Run tests for a specific browser
-npx playwright test --project=chromium
 ```
 
-**Note:** The pre-commit hook will run E2E tests automatically if browsers are installed. If browsers aren't installed, the hook will skip E2E tests with a warning (commit will still proceed).
+## Maintenance
 
-## Accessibility
+Recurring checks are automated in GitHub Actions:
 
-This site follows WCAG 2.1 AA guidelines:
+- Security scan workflow: `.github/workflows/security.yml`
+- Scheduled maintenance workflow: `.github/workflows/maintenance.yml`
 
-- Semantic HTML structure
-- Proper ARIA labels and roles
-- Keyboard navigation support
-- Focus indicators
-- Alt text for images
-- Sufficient colour contrast
-- Responsive design
+Recommended manual cadence:
 
-## Performance
-
-Optimisations include:
-
-- Static site generation
-- Image optimisation
-- Lazy loading
-- Minimal JavaScript
-- CSS minification
-- Efficient bundling
-
-## Security
-
-Security features:
-
-- Content Security Policy headers
-- X-Frame-Options
-- X-Content-Type-Options
-- Secure dependencies
-- Regular dependency updates
+- Weekly: triage Dependabot, gitleaks, and CodeQL alerts.
+- Monthly: review `npm audit --omit=dev --audit-level=high` and outdated deps.
+- Quarterly: review CSP/security headers and validate `security.txt` contact info.
 
 ## Troubleshooting
 
-### Decap CMS not loading
-
-- Ensure Identity and Git Gateway are enabled (Netlify)
-- Check that `public/admin/config.yml` exists
-- Verify your Git provider is connected
-
-### Build failures
-
-- Check Node.js version (requires 20+)
-- Clear `node_modules` and reinstall
-- Check for TypeScript errors: `npm run build`
-
-### Dark mode not working
-
-- Clear browser cache
-- Check localStorage for theme preference
-- Verify JavaScript is enabled
-
-## Contributing
-
-This is a personal website, but suggestions and improvements are welcome!
+- Build errors: run `npm run build` locally and fix type/content issues.
+- Decap login issues: verify Netlify Identity + Git Gateway are enabled.
+- E2E failures in CI for `/projects`: ensure `PUBLIC_ENABLE_PROJECTS=true` is set for the E2E build step (already configured in CI workflow).
 
 ## License
 
-All rights reserved. This is a personal website.
-
-## Support
-
-For issues or questions, please open an issue on GitHub.
+All rights reserved.

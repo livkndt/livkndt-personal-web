@@ -37,35 +37,10 @@ describe('security hardening config', () => {
     }
   });
 
-  it('defines a comprehensive CSP in vercel config', () => {
-    const vercelConfig = JSON.parse(readFileSync('vercel.json', 'utf8')) as {
-      headers?: Array<{ source: string; headers: Array<{ key: string; value: string }> }>;
-    };
-    const globalHeaders = vercelConfig.headers?.find((entry) => entry.source === '/(.*)');
-    const cspHeader = globalHeaders?.headers.find(
-      (header) => header.key === 'Content-Security-Policy'
-    );
-
-    expect(cspHeader?.value).toBeDefined();
-
-    const directives = getCspDirectives(cspHeader?.value ?? '');
-
-    for (const directive of REQUIRED_CSP_DIRECTIVES) {
-      expect(directives).toContain(directive);
-    }
-  });
-
-  it('enforces HSTS in both hosting configs', () => {
+  it('enforces HSTS in netlify config', () => {
     const netlifyToml = readFileSync('netlify.toml', 'utf8');
-    const vercelConfig = JSON.parse(readFileSync('vercel.json', 'utf8')) as {
-      headers?: Array<{ source: string; headers: Array<{ key: string; value: string }> }>;
-    };
-    const globalHeaders = vercelConfig.headers?.find((entry) => entry.source === '/(.*)');
 
     expect(netlifyToml).toContain('Strict-Transport-Security');
-    expect(
-      globalHeaders?.headers.some((header) => header.key === 'Strict-Transport-Security')
-    ).toBe(true);
   });
 
   it('does not ship placeholder values in public security files', () => {
@@ -126,21 +101,16 @@ describe('security hardening config', () => {
 
   it('defines phase five maintenance automation and runbook', () => {
     expect(existsSync('.github/workflows/maintenance.yml')).toBe(true);
-    expect(existsSync('SECURITY_MAINTENANCE.md')).toBe(true);
 
     const maintenanceWorkflow = readFileSync('.github/workflows/maintenance.yml', 'utf8');
-    const maintenanceRunbook = readFileSync('SECURITY_MAINTENANCE.md', 'utf8');
 
     expect(maintenanceWorkflow).toContain("cron: '0 7 * * 1'");
     expect(maintenanceWorkflow).toContain("cron: '0 8 1 * *'");
     expect(maintenanceWorkflow).toContain("cron: '0 8 1 */3 *'");
     expect(maintenanceWorkflow).toContain('npm audit --omit=dev --audit-level=high');
     expect(maintenanceWorkflow).toContain('npm outdated');
-
-    expect(maintenanceRunbook).toContain('Weekly');
-    expect(maintenanceRunbook).toContain('Monthly');
-    expect(maintenanceRunbook).toContain('Quarterly');
-    expect(maintenanceRunbook).toContain('CSP');
-    expect(maintenanceRunbook).toContain('security.txt');
+    expect(maintenanceWorkflow).toContain('Quarterly maintenance checklist');
+    expect(maintenanceWorkflow).toContain('Review CSP and security headers');
+    expect(maintenanceWorkflow).toContain('Validate security.txt contact and expiry');
   });
 });
