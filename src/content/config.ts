@@ -30,4 +30,17 @@ const experience = defineCollection({
   }),
 });
 
-export const collections = { blog, experience };
+const projects = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    github_url: z.string().url().optional(),
+    live_url: z.string().url().optional(),
+    tags: z.array(z.string()).default([]),
+    priority: z.number().default(99),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, experience, projects };

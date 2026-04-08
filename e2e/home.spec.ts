@@ -1,27 +1,39 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Home Page', () => {
-  test('should display the home page correctly', async ({ page }) => {
+  test('should display the landing page correctly', async ({ page }) => {
     await page.goto('/');
 
     // Check page title
     await expect(page).toHaveTitle(/Olivia Knoedt/);
 
     // Check main heading
-    const heading = page.getByRole('heading', { name: /Hello, I'm/ });
+    const heading = page.getByRole('heading', { name: 'Olivia Knoedt' });
     await expect(heading).toBeVisible();
 
-    // Check social links are present (in main content, not footer)
-    const main = page.getByRole('main');
-    const linkedinLink = main.getByRole('link', { name: 'LinkedIn' });
-    await expect(linkedinLink).toBeVisible();
+    // Check tagline
+    await expect(page.getByText(/Maker of things/)).toBeVisible();
 
-    const githubLink = main.getByRole('link', { name: 'GitHub' });
-    await expect(githubLink).toBeVisible();
+    // Check landing page links are present
+    const main = page.getByRole('main');
+    await expect(main.getByRole('link', { name: 'Tech Portfolio' })).toBeVisible();
+    await expect(main.getByRole('link', { name: 'Balancing the Stack' })).toBeVisible();
+    await expect(main.getByRole('link', { name: "Olive's Makes" })).toBeVisible();
+    await expect(main.getByRole('link', { name: 'Archive' })).toBeVisible();
   });
 
-  test('should have accessible navigation', async ({ page }) => {
+  test('should have no navigation header on home page', async ({ page }) => {
     await page.goto('/');
+
+    // The home page uses showHeader={false}, so no main nav
+    const mainNav = page.getByRole('navigation', { name: 'Main navigation' });
+    await expect(mainNav).not.toBeVisible();
+  });
+});
+
+test.describe('Portfolio Page', () => {
+  test('should have accessible navigation', async ({ page }) => {
+    await page.goto('/about');
 
     // On mobile, we need to open the hamburger menu first
     const projectName = test.info().project.name;
@@ -35,23 +47,21 @@ test.describe('Home Page', () => {
     }
 
     // Check navigation links - get the inner nav (Navigation component, not header wrapper)
-    // The header has two nav elements with "Main navigation", we want the inner one
     const nav = page.getByRole('navigation', { name: 'Main navigation' }).nth(1);
     await expect(nav).toBeVisible();
 
-    // Scope links to the navigation element to avoid conflicts with header logo
     const homeLink = nav.getByRole('link', { name: 'Home' });
     await expect(homeLink).toBeVisible();
 
     const experienceLink = nav.getByRole('link', { name: 'Experience' });
     await expect(experienceLink).toBeVisible();
 
-    const blogLink = nav.getByRole('link', { name: 'Blog' });
-    await expect(blogLink).toBeVisible();
+    const archiveLink = nav.getByRole('link', { name: 'Archive' });
+    await expect(archiveLink).toBeVisible();
   });
 
   test('should toggle dark mode', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/about');
 
     const themeToggle = page.getByRole('button', { name: 'Toggle dark mode' });
     await expect(themeToggle).toBeVisible();

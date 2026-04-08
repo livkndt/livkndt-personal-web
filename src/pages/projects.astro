@@ -1,25 +1,95 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config';
+import { getCollection } from 'astro:content';
 
 // Only render this page if the feature flag is enabled
 if (!siteConfig.features.projects) {
   return Astro.redirect('/404');
 }
+
+const allProjects = await getCollection('projects', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+
+const projects = allProjects.sort((a, b) => a.data.priority - b.data.priority);
 ---
 
 <BaseLayout
   title={`Projects | ${siteConfig.title}`}
-  description="Projects and portfolio work by Olivia Knoedt"
+  description="Projects and open source work by Olivia Knoedt"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
     <div class="max-w-4xl mx-auto">
       <h1 class="text-4xl sm:text-5xl font-bold mb-12 text-twilight-indigo dark:text-eggshell">
         Projects
       </h1>
-      <div class="space-y-8">
-        <p class="text-lg text-twilight-indigo/70 dark:text-eggshell/70">Projects coming soon...</p>
-      </div>
+
+      {
+        projects.length === 0 ? (
+          <p class="text-lg text-twilight-indigo/70 dark:text-eggshell/70">No projects yet.</p>
+        ) : (
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <li>
+                <article class="h-full flex flex-col bg-eggshell dark:bg-twilight-indigo/50 border border-apricot-cream/40 dark:border-muted-teal/20 rounded-xl p-6 hover:shadow-md hover:border-burnt-peach/50 dark:hover:border-muted-teal/50 transition-all duration-200">
+                  <h2 class="text-xl font-bold text-twilight-indigo dark:text-eggshell mb-3">
+                    {project.data.title}
+                  </h2>
+                  <p class="text-twilight-indigo/70 dark:text-eggshell/70 text-sm leading-relaxed mb-4 flex-1">
+                    {project.data.description}
+                  </p>
+                  {project.data.tags.length > 0 && (
+                    <ul class="flex flex-wrap gap-2 mb-5">
+                      {project.data.tags.map((tag) => (
+                        <li>
+                          <span class="px-2 py-1 bg-apricot-cream/40 dark:bg-muted-teal/20 text-twilight-indigo dark:text-eggshell rounded text-xs font-medium">
+                            {tag}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div class="flex flex-wrap gap-3">
+                    {project.data.github_url && (
+                      <a
+                        href={project.data.github_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-apricot-cream text-twilight-indigo rounded-lg hover:bg-apricot-cream/90 transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-apricot-cream focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        GitHub
+                      </a>
+                    )}
+                    {project.data.live_url && (
+                      <a
+                        href={project.data.live_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-4 py-2 border border-apricot-cream/60 dark:border-muted-teal/30 text-twilight-indigo dark:text-eggshell rounded-lg hover:border-burnt-peach/60 dark:hover:border-muted-teal/60 hover:shadow-sm transition-all text-sm font-medium focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo"
+                      >
+                        Live ↗
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        )
+      }
     </div>
   </div>
 </BaseLayout>

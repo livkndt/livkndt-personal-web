@@ -42,6 +42,12 @@
 }
 
 @layer components {
+  .substack-embed {
+    @apply block w-full max-w-[480px] mx-auto border border-[#EEE];
+    background: white;
+    box-sizing: border-box;
+  }
+
   .prose {
     @apply max-w-none;
   }

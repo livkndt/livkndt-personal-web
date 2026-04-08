@@ -9,6 +9,8 @@ interface Props {
   description?: string;
   image?: string;
   type?: string;
+  showHeader?: boolean;
+  centerContent?: boolean;
 }
 
 const {
@@ -16,6 +18,8 @@ const {
   description = siteConfig.description,
   image = `${siteConfig.url}/og-image.jpg`,
   type = 'website',
+  showHeader = true,
+  centerContent = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
@@ -92,8 +96,8 @@ gtag('config', '${siteConfig.analytics.googleAnalytics.measurementId}');`}
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="min-h-[100dvh] flex flex-col">
-      <Header />
-      <main class="flex-grow" id="main-content">
+      {showHeader && <Header />}
+      <main class={`flex-grow${centerContent ? ' flex items-center' : ''}`} id="main-content">
         <slot />
       </main>
       <Footer />
