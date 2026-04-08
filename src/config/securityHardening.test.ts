@@ -76,4 +76,15 @@ describe('security hardening config', () => {
     expect(securityTxt).not.toContain('yourdomain.com');
     expect(robotsTxt).not.toContain('yourdomain.com');
   });
+
+  it('pins Decap CMS version in admin script source', () => {
+    const adminIndexHtml = readFileSync('public/admin/index.html', 'utf8');
+    const scriptMatch = adminIndexHtml.match(
+      /https:\/\/unpkg\.com\/decap-cms@([^/]+)\/dist\/decap-cms\.js/
+    );
+
+    expect(scriptMatch?.[1]).toBeDefined();
+    expect(scriptMatch?.[1]).not.toContain('^');
+    expect(scriptMatch?.[1]).not.toContain('~');
+  });
 });
