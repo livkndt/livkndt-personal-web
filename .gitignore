@@ -36,3 +36,6 @@ playwright-report/
 .temp/
 .tmp/
 
+# Astro generated files
+.astro/
+
