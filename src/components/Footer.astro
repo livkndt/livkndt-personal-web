@@ -69,12 +69,11 @@ const socialLinks = getFooterSocialLinks(siteConfig.social);
                     <i class="fi fi-rr-bookmark w-5 h-5" aria-hidden="true" />
                   )}
                   {link.icon === 'medium' && (
-                    <span
-                      class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-burnt-peach/40 text-[11px] font-semibold"
-                      aria-hidden="true"
-                    >
-                      M
-                    </span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="5.5" cy="12" r="5" />
+                      <ellipse cx="14.5" cy="12" rx="3.5" ry="4.5" />
+                      <ellipse cx="20.5" cy="12" rx="1.8" ry="3" />
+                    </svg>
                   )}
                 </a>
               </li>

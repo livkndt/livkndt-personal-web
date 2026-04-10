@@ -113,12 +113,16 @@ const socialLinks = getAboutSocialLinks(siteConfig.social);
                       <i class="fi fi-rr-bookmark w-4 h-4" aria-hidden="true" />
                     )}
                     {link.icon === 'medium' && (
-                      <span
-                        class="inline-flex h-4 w-4 items-center justify-center rounded-full border border-twilight-indigo/30 text-[10px] font-semibold"
+                      <svg
+                        class="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
                         aria-hidden="true"
                       >
-                        M
-                      </span>
+                        <circle cx="5.5" cy="12" r="5" />
+                        <ellipse cx="14.5" cy="12" rx="3.5" ry="4.5" />
+                        <ellipse cx="20.5" cy="12" rx="1.8" ry="3" />
+                      </svg>
                     )}
                     {link.label}
                   </a>
