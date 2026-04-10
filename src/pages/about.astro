@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config';
+import { getWorkSections } from '../utils/workSections';
+
+const workSections = getWorkSections(siteConfig.features.projects);
 ---
 
 <BaseLayout
@@ -39,44 +42,31 @@ import { siteConfig } from '../config';
       <section aria-label="My work">
         <nav aria-label="Portfolio sections">
           <ul class="flex flex-col sm:flex-row gap-4">
-            <li class="flex-1">
-              <a
-                href="/experience"
-                class="group flex items-center justify-between w-full px-6 py-4 bg-eggshell dark:bg-twilight-indigo/50 border border-apricot-cream/40 dark:border-muted-teal/20 rounded-xl hover:border-burnt-peach/60 dark:hover:border-muted-teal/60 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo"
-              >
-                <div>
-                  <span class="font-semibold text-twilight-indigo dark:text-eggshell block"
-                    >Experience</span
+            {
+              workSections.map((section) => (
+                <li class="flex-1">
+                  <a
+                    href={section.href}
+                    class="group flex items-center justify-between w-full px-6 py-4 bg-eggshell dark:bg-twilight-indigo/50 border border-apricot-cream/40 dark:border-muted-teal/20 rounded-xl hover:border-burnt-peach/60 dark:hover:border-muted-teal/60 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo"
                   >
-                  <span class="text-sm text-twilight-indigo/50 dark:text-eggshell/50"
-                    >Career history</span
-                  >
-                </div>
-                <span
-                  class="text-twilight-indigo/40 dark:text-eggshell/40 group-hover:text-burnt-peach dark:group-hover:text-muted-teal transition-colors"
-                  aria-hidden="true">→</span
-                >
-              </a>
-            </li>
-            <li class="flex-1">
-              <a
-                href="/projects"
-                class="group flex items-center justify-between w-full px-6 py-4 bg-eggshell dark:bg-twilight-indigo/50 border border-apricot-cream/40 dark:border-muted-teal/20 rounded-xl hover:border-burnt-peach/60 dark:hover:border-muted-teal/60 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-burnt-peach dark:focus:ring-muted-teal focus:ring-offset-2 dark:focus:ring-offset-twilight-indigo"
-              >
-                <div>
-                  <span class="font-semibold text-twilight-indigo dark:text-eggshell block"
-                    >Projects</span
-                  >
-                  <span class="text-sm text-twilight-indigo/50 dark:text-eggshell/50"
-                    >Things I've built</span
-                  >
-                </div>
-                <span
-                  class="text-twilight-indigo/40 dark:text-eggshell/40 group-hover:text-burnt-peach dark:group-hover:text-muted-teal transition-colors"
-                  aria-hidden="true">→</span
-                >
-              </a>
-            </li>
+                    <div>
+                      <span class="font-semibold text-twilight-indigo dark:text-eggshell block">
+                        {section.label}
+                      </span>
+                      <span class="text-sm text-twilight-indigo/50 dark:text-eggshell/50">
+                        {section.subtitle}
+                      </span>
+                    </div>
+                    <span
+                      class="text-twilight-indigo/40 dark:text-eggshell/40 group-hover:text-burnt-peach dark:group-hover:text-muted-teal transition-colors"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </nav>
       </section>
