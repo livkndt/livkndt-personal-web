@@ -11,6 +11,7 @@ export const siteConfig = {
     substackTech: 'https://balancingthestack.substack.com/',
     substackMakes: 'https://olivesmakes.substack.com/',
     ravelry: 'https://www.ravelry.com/people/livkndt',
+    threadloop: 'https://threadloop.app/members/livkndt',
     substack: 'https://substack.com/@livkndt',
   },
   analytics: {
